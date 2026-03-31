@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дмитро Міхєєв — AI Консультант для бізнесу</title>
+    <meta name="description" content="Персональні консультації для підприємців, які хочуть впровадити AI у свій бізнес. Без складних термінів. Тільки те, що реально працює.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1B3238',
+                        accent: '#0CC795',
+                        'accent-light': '#31DAA0',
+                        'bg-main': '#FDFDFD',
+                        'bg-mint': '#EDFBF6',
+                        'text-dark': '#1C1C1C',
+                        'text-body': '#52525B',
+                        'text-muted': '#81818B',
+                        'text-light': '#D1D1D1',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .gradient-btn {
+            background: linear-gradient(135deg, #31DAA0 0%, #0CC795 100%);
+        }
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, #28c48e 0%, #0ab585 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(12, 199, 149, 0.3);
+        }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer.open { max-height: 300px; }
+        .faq-chevron { transition: transform 0.3s ease; }
+        .faq-chevron.open { transform: rotate(180deg); }
+    </style>
+</head>
+<body class="bg-bg-main font-sans text-text-body antialiased">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full bg-primary/95 backdrop-blur-sm z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+            <a href="#" class="text-white font-bold text-xl">Дмитро<span class="text-accent">.</span></a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#problem" class="text-text-light hover:text-white text-sm transition">Проблема</a>
+                <a href="#solution" class="text-text-light hover:text-white text-sm transition">Рішення</a>
+                <a href="#about" class="text-text-light hover:text-white text-sm transition">Про мене</a>
+                <a href="#how" class="text-text-light hover:text-white text-sm transition">Як працює</a>
+                <a href="#faq" class="text-text-light hover:text-white text-sm transition">FAQ</a>
+            </nav>
+            <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn text-white text-sm font-semibold px-5 py-2.5 rounded-2xl transition-all inline-flex items-center gap-2">
+                Контакт
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5-5-5-5"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="bg-primary pt-28 pb-16 md:pt-36 md:pb-24 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-64 h-64 rounded-full bg-accent blur-3xl"></div>
+            <div class="absolute bottom-10 right-20 w-48 h-48 rounded-full bg-accent-light blur-3xl"></div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="flex-1 text-center md:text-left">
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6">
+                        Навчу AI заробляти вам гроші та <span class="text-accent">заощаджувати час</span>
+                    </h1>
+                    <p class="text-text-light text-lg mb-8 max-w-xl">
+                        Персональні консультації для підприємців, які хочуть впровадити AI у свій бізнес. Без складних термінів. Без зайвих витрат. Тільки те, що реально працює для вашого бізнесу.
+                    </p>
+                    <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all inline-flex items-center gap-3 mb-6">
+                        📩 Написати в Telegram
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5-5-5-5"/></svg>
+                    </a>
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-text-light">
+                        <span class="flex items-center gap-1.5"><span class="text-accent">✓</span> 15+ років в IT</span>
+                        <span class="text-text-muted">·</span>
+                        <span class="flex items-center gap-1.5"><span class="text-accent">✓</span> Компанія з 40+ спеціалістів</span>
+                        <span class="text-text-muted">·</span>
+                        <span class="flex items-center gap-1.5"><span class="text-accent">✓</span> 100% success rate на Upwork</span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <img src="dima-on-transparent-bg.png" alt="Дмитро Міхєєв" class="w-64 md:w-80 lg:w-96 rounded-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section id="problem" class="py-16 md:py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-dark text-center mb-4">Знайоме<span class="text-accent">?</span></h2>
+            <div class="mt-10 space-y-5">
+                <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                    <span class="text-red-400 text-xl mt-0.5">✗</span>
+                    <p class="text-text-body">Ви чуєте про AI кожен день, але не розумієте з чого почати у <strong>ВАШОМУ</strong> бізнесі</p>
+                </div>
+                <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                    <span class="text-red-400 text-xl mt-0.5">✗</span>
+                    <p class="text-text-body">Конкуренти вже автоматизують процеси, а ви досі робите все вручну</p>
+                </div>
+                <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                    <span class="text-red-400 text-xl mt-0.5">✗</span>
+                    <p class="text-text-body">Пробували ChatGPT, але далі простих питань не пішли</p>
+                </div>
+                <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                    <span class="text-red-400 text-xl mt-0.5">✗</span>
+                    <p class="text-text-body">Витрачаєте години на рутину, яку AI міг би робити за хвилини</p>
+                </div>
+                <div class="flex items-start gap-4 bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
+                    <span class="text-red-400 text-xl mt-0.5">✗</span>
+                    <p class="text-text-body">Наймали "спеціаліста" який дав теорію, але не результат</p>
+                </div>
+            </div>
+            <p class="text-center mt-10 text-lg text-text-dark font-medium max-w-2xl mx-auto">
+                Проблема не в AI. Проблема в тому, що ніхто не показав вам, як саме AI працює для <span class="text-accent font-bold">вашого конкретного бізнесу</span>.
+            </p>
+        </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section id="solution" class="py-16 md:py-24 bg-bg-mint">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-dark text-center mb-4">
+                Я покажу вам, де саме AI <span class="text-accent">заощадить вам час і гроші</span>
+            </h2>
+            <p class="text-center text-text-body max-w-2xl mx-auto mb-12">
+                Не загальні поради з YouTube. Не курс на 40 годин. Персональна консультація, де ми розбираємо ваш бізнес і знаходимо конкретні точки, де AI дасть максимальний результат.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="w-14 h-14 bg-bg-mint rounded-2xl flex items-center justify-center text-2xl mb-5">🎯</div>
+                    <h3 class="text-lg font-bold text-text-dark mb-3">Аналіз вашого бізнесу</h3>
+                    <p class="text-text-body">Знайдемо процеси, які забирають найбільше часу та де AI дасть максимальну віддачу.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="w-14 h-14 bg-bg-mint rounded-2xl flex items-center justify-center text-2xl mb-5">🔧</div>
+                    <h3 class="text-lg font-bold text-text-dark mb-3">Конкретний план автоматизації</h3>
+                    <p class="text-text-body">Що впровадити, в якому порядку, які інструменти. Без абстракцій, тільки конкретика.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="w-14 h-14 bg-bg-mint rounded-2xl flex items-center justify-center text-2xl mb-5">💰</div>
+                    <h3 class="text-lg font-bold text-text-dark mb-3">Розрахунок економії</h3>
+                    <p class="text-text-body">Скільки часу та грошей ви зекономите щомісяця. Реальні цифри для вашого бізнесу.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="w-14 h-14 bg-bg-mint rounded-2xl flex items-center justify-center text-2xl mb-5">🚀</div>
+                    <h3 class="text-lg font-bold text-text-dark mb-3">Hands-on впровадження</h3>
+                    <p class="text-text-body">Не просто розповідаю, а допомагаю зробити. Крок за кроком, від ідеї до результату.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="flex-shrink-0">
+                    <img src="dima-on-white-bg.jpg" alt="Дмитро Міхєєв" class="w-64 md:w-80 rounded-2xl shadow-lg">
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-3xl md:text-4xl font-bold text-text-dark mb-6">Привіт, я <span class="text-accent">Дмитро</span></h2>
+                    <div class="space-y-4 text-text-body leading-relaxed">
+                        <p>За 15+ років в IT я пройшов шлях від розробника до засновника компанії з 40+ спеціалістів. Побудував <strong>Appus Studio</strong> — одну з провідних студій мобільної розробки в Україні. Працював з клієнтами по всьому світу на Upwork з <strong>100% success rate</strong>.</p>
+                        <p>Зараз я повністю зосереджений на AI. Як співзасновник <strong>Code&amp;Soul</strong>, я будую системи AI-автоматизації для бізнесу. Як засновник <strong>RunClaw</strong> — розробляю інфраструктуру для AI-агентів.</p>
+                        <p class="font-medium text-text-dark">Я не теоретик. Я підприємець, який використовує AI у власному бізнесі кожен день. І я навчу вас робити те саме.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="py-16 md:py-24 bg-primary">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-14">Як це <span class="text-accent">працює</span></h2>
+            <div class="space-y-8">
+                <div class="flex items-start gap-6">
+                    <div class="w-12 h-12 flex-shrink-0 gradient-btn rounded-2xl flex items-center justify-center text-white font-bold text-lg">1</div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg mb-1">Напишіть мені в Telegram</h3>
+                        <p class="text-text-light">Розкажіть коротко про свій бізнес і що хочете покращити.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-6">
+                    <div class="w-12 h-12 flex-shrink-0 gradient-btn rounded-2xl flex items-center justify-center text-white font-bold text-lg">2</div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg mb-1">Безкоштовна розмова (15 хв)</h3>
+                        <p class="text-text-light">Я послухаю, задам питання і скажу чи зможу допомогти.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-6">
+                    <div class="w-12 h-12 flex-shrink-0 gradient-btn rounded-2xl flex items-center justify-center text-white font-bold text-lg">3</div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg mb-1">Персональна консультація</h3>
+                        <p class="text-text-light">Глибокий розбір вашого бізнесу, конкретний план автоматизації з пріоритетами.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-6">
+                    <div class="w-12 h-12 flex-shrink-0 gradient-btn rounded-2xl flex items-center justify-center text-white font-bold text-lg">4</div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg mb-1">Впровадження з підтримкою</h3>
+                        <p class="text-text-light">Якщо потрібно, я допомагаю впроваджувати крок за кроком.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all inline-flex items-center gap-3">
+                    📩 Написати в Telegram
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5-5-5-5"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOR WHOM -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-dark text-center mb-12">Для <span class="text-accent">кого</span> це</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-4">🏢</div>
+                    <h3 class="text-lg font-bold text-text-dark mb-2">Малий та середній бізнес</h3>
+                    <p class="text-text-body">Власники, які хочуть працювати менше, а заробляти більше.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-4">💡</div>
+                    <h3 class="text-lg font-bold text-text-dark mb-2">Підприємці</h3>
+                    <p class="text-text-body">Які розуміють що AI — це не майбутнє, а сьогодення. Але не знають з чого почати.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-4">👤</div>
+                    <h3 class="text-lg font-bold text-text-dark mb-2">Фрілансери та консультанти</h3>
+                    <p class="text-text-body">Які хочуть масштабувати свій бізнес без найму додаткових людей.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="text-3xl mb-4">👥</div>
+                    <h3 class="text-lg font-bold text-text-dark mb-2">Команди</h3>
+                    <p class="text-text-body">Які витрачають час на рутину замість стратегічної роботи.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="py-16 md:py-24 bg-bg-mint">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-dark text-center mb-12">Досягнення</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                    <div class="text-accent text-3xl font-extrabold mb-2">$600K+</div>
+                    <p class="text-text-body text-sm">зароблено на Upwork з 100% success rate</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                    <div class="text-accent text-3xl font-extrabold mb-2">40+</div>
+                    <p class="text-text-body text-sm">спеціалістів у Appus Studio</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                    <div class="text-accent text-3xl font-extrabold mb-2">15+</div>
+                    <p class="text-text-body text-sm">років професійного досвіду в IT</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm text-center sm:col-span-1">
+                    <div class="text-2xl mb-2">🤖</div>
+                    <p class="text-text-dark font-semibold">Code&amp;Soul</p>
+                    <p class="text-text-body text-sm">AI автоматизація для бізнесу</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm text-center sm:col-span-1">
+                    <div class="text-2xl mb-2">⚡</div>
+                    <p class="text-text-dark font-semibold">RunClaw</p>
+                    <p class="text-text-body text-sm">Інфраструктура для AI-агентів</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 md:py-24">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-dark text-center mb-12">Часті <span class="text-accent">питання</span></h2>
+            <div class="space-y-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-text-dark pr-4">Я нічого не розумію в AI. Це для мене?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-text-body">Так, саме для вас. Я пояснюю все простою мовою, без технічного жаргону. Мої консультації побудовані так, щоб ви розуміли не тільки ЩО робити, а й ЧОМУ.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-text-dark pr-4">Скільки коштує консультація?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-text-body">Ціна залежить від складності вашого бізнесу та обсягу роботи. Напишіть мені в Telegram — розкажу деталі після короткої безкоштовної розмови.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-text-dark pr-4">Чи підходить AI для мого бізнесу?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-text-body">Якщо у вашому бізнесі є повторювані процеси, комунікація з клієнтами, або обробка даних — AI майже напевно зможе допомогти. Давайте розберемось разом на безкоштовній 15-хвилинній розмові.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left">
+                        <span class="font-semibold text-text-dark pr-4">Чим це відрізняється від курсів по AI?</span>
+                        <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-text-body">Курси дають загальну теорію. Я даю конкретний план для ВАШОГО бізнесу. Не треба витрачати 40 годин на навчання — ми фокусуємось на тому, що дасть результат саме вам.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="py-16 md:py-24 bg-primary">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Готові <span class="text-accent">почати</span>?</h2>
+            <p class="text-text-light text-lg mb-10 max-w-xl mx-auto">
+                Напишіть мені в Telegram. Розкажіть коротко про свій бізнес. Я відповім протягом дня і ми домовимось про безкоштовну 15-хвилинну розмову.
+            </p>
+            <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn text-white font-semibold px-10 py-4 rounded-2xl text-lg transition-all inline-flex items-center gap-3">
+                📩 Написати в Telegram
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5-5-5-5"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-primary border-t border-white/10 py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="text-white font-bold text-xl">Дмитро<span class="text-accent">.</span></div>
+                <div class="flex items-center gap-6">
+                    <a href="https://t.me/mikheev_dmitry" target="_blank" class="text-text-light hover:text-accent transition" title="Telegram">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/share/1HnSrp1dm2/?mibextid=wwXIfr" target="_blank" class="text-text-light hover:text-accent transition" title="Facebook">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.threads.com/@agents_for_biz" target="_blank" class="text-text-light hover:text-accent transition" title="Threads">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.432 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.278 3.257-.86 1.065-2.074 1.63-3.607 1.684h-.063c-1.226-.042-2.239-.478-3.012-1.297-.7-.744-1.074-1.718-1.083-2.816.01-1.173.447-2.216 1.265-3.015.863-.844 2.058-1.32 3.553-1.415 1.109-.07 2.135.033 3.057.306a3.78 3.78 0 0 0-.062-.773c-.215-1.166-.882-1.76-1.981-1.76h-.053c-.764.018-1.405.315-1.908.882l-1.442-1.373c.82-.905 1.9-1.388 3.22-1.433h.074c1.63 0 2.873.643 3.593 1.86.373.633.601 1.39.683 2.267.439.193.843.42 1.207.681 1.075.77 1.847 1.81 2.264 3.028.618 1.822.514 4.315-1.574 6.36-1.88 1.843-4.15 2.664-7.342 2.687zm-.36-9.983c-.982.056-1.682.352-2.08.88-.332.44-.503.983-.51 1.612.006.582.196 1.058.564 1.413.43.415 1.05.64 1.843.668h.045c1.467-.053 2.337-.758 2.75-2.226a5.048 5.048 0 0 0 .123-1.244c-.649-.217-1.396-.356-2.249-.356-.161 0-.324.005-.486.015v-.762z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mikheev-dmitry/" target="_blank" class="text-text-light hover:text-accent transition" title="LinkedIn">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://www.upwork.com/freelancers/dmytromikheiev" target="_blank" class="text-text-light hover:text-accent transition" title="Upwork">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+                    </a>
+                </div>
+                <p class="text-text-muted text-sm">© 2026 Дмитро Міхєєв</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const chevron = btn.querySelector('.faq-chevron');
+            answer.classList.toggle('open');
+            chevron.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
