@@ -234,7 +234,7 @@
     </header>
 
     <!-- HERO -->
-    <section class="bg-primary pt-32 pb-20 md:pt-40 md:pb-28 relative overflow-hidden" style="padding-bottom: 0;">
+    <section class="bg-primary relative overflow-hidden" style="padding-top: 0; padding-bottom: 0;">
         <!-- Animated mesh gradient -->
         <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
             <div class="mesh-blob-1 absolute top-10 left-[-5%] w-[500px] h-[500px] rounded-full opacity-[0.12]"
@@ -248,42 +248,45 @@
                  style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 40px 40px;"></div>
         </div>
         <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-            <div class="relative flex flex-col md:flex-row items-end gap-12 md:gap-0">
-                <div class="flex-1 text-center md:text-left pb-20 md:pb-28 relative z-20">
-                    <div class="reveal inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-xs font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
-                        AI Консультант · dmytro.expert
-                    </div>
-                    <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-                        Будую AI-системи що заробляють гроші та <span class="text-accent">економлять час</span>
-                    </h1>
-                    <p class="reveal reveal-delay-2 text-text-light text-lg md:text-xl mb-10 max-w-xl leading-relaxed">
-                        Персональні консультації для підприємців, які хочуть впровадити AI у свій бізнес. Без складних термінів. Без зайвих витрат. Тільки те, що реально працює для вашого бізнесу.
-                    </p>
-                    <div class="reveal reveal-delay-3">
-                        <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn btn-pulse font-semibold px-9 py-4 rounded-2xl text-lg transition-all inline-flex items-center gap-3 mb-8" style="color: #1B3238;">
-                            📩 Написати в Telegram
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><path d="M9 18l6-6-6-6"/></svg>
-                        </a>
-                    </div>
-                    <div class="reveal reveal-delay-4 flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-text-light">
-                        <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> 15+ років в IT</span>
-                        <span class="text-white/20">·</span>
-                        <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> Сертифікований AI спеціаліст</span>
-                        <span class="text-white/20">·</span>
-                        <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> 100% success rate на Upwork</span>
+            <div class="relative md:min-h-[600px] lg:min-h-[650px]">
+                <!-- Text column: absolutely positioned on left, vertically centered -->
+                <div class="relative z-20 pt-32 pb-20 md:pt-40 md:pb-28 md:w-[55%]">
+                    <div class="text-center md:text-left">
+                        <div class="reveal inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-xs font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
+                            AI Консультант · dmytro.expert
+                        </div>
+                        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                            Будую AI-системи що заробляють гроші та <span class="text-accent">економлять час</span>
+                        </h1>
+                        <p class="reveal reveal-delay-2 text-text-light text-lg md:text-xl mb-10 max-w-xl leading-relaxed">
+                            Персональні консультації для підприємців, які хочуть впровадити AI у свій бізнес. Без складних термінів. Без зайвих витрат. Тільки те, що реально працює для вашого бізнесу.
+                        </p>
+                        <div class="reveal reveal-delay-3">
+                            <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn btn-pulse font-semibold px-9 py-4 rounded-2xl text-lg transition-all inline-flex items-center gap-3 mb-8" style="color: #1B3238;">
+                                📩 Написати в Telegram
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><path d="M9 18l6-6-6-6"/></svg>
+                            </a>
+                        </div>
+                        <div class="reveal reveal-delay-4 flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-text-light">
+                            <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> 15+ років в IT</span>
+                            <span class="text-white/20">·</span>
+                            <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> Сертифікований AI спеціаліст</span>
+                            <span class="text-white/20">·</span>
+                            <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> 100% success rate на Upwork</span>
+                        </div>
                     </div>
                 </div>
-                <div class="reveal reveal-delay-2 self-end md:absolute md:right-0 md:bottom-0 z-10" style="width: 56%; min-width: 320px;">
+                <!-- Photo: positioned bottom-right, sized so face clears nav -->
+                <div class="reveal reveal-delay-2 md:absolute md:right-[-2%] md:bottom-0 z-10 flex justify-center md:justify-end" style="width: 100%; max-width: 480px;">
                     <div class="relative">
                         <!-- Glow ring behind photo -->
-                        <div class="absolute inset-0 rounded-2xl blur-2xl opacity-30 scale-105"
+                        <div class="absolute inset-0 blur-2xl opacity-30 scale-105"
                              style="background: radial-gradient(circle, #0CC795, transparent 70%);"></div>
-                        <img src="header.png" alt="Дмитро Міхєєв" class="relative w-full max-w-none" style="margin-bottom: -1px; display: block;">
+                        <img src="header.png" alt="Дмитро Міхєєв" class="relative w-full max-w-none" style="display: block; max-height: 580px; object-fit: contain; object-position: bottom;">
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 
     <!-- PROBLEM -->
