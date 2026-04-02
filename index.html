@@ -12,6 +12,9 @@
     <meta name="description" content="Персональні консультації для підприємців, які хочуть впровадити AI у свій бізнес. Без складних термінів. Тільки те, що реально працює.">
 
     <!-- Open Graph -->
+    <!-- NOTE: OG tags use Ukrainian as default. For full EN OG localization, a server-side or multi-page approach is needed (JS changes are not picked up by crawlers). -->
+    <meta property="og:locale" content="uk_UA">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dmytro.expert/">
     <meta property="og:title" content="Дмитро Міхєєв — AI Консультант для бізнесу">
@@ -200,6 +203,19 @@
             -webkit-backdrop-filter: blur(18px);
         }
 
+        /* ── Language switcher ── */
+        .lang-btn {
+            transition: color 0.2s ease;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            line-height: 1;
+        }
+        .lang-btn:hover { color: #fff; }
+        .lang-btn.active { color: #0CC795; font-weight: 700; }
+
         /* ── Section gradient transitions ── */
         .section-fade-bottom {
             position: relative;
@@ -267,18 +283,26 @@
     <!-- HEADER -->
     <header class="fixed top-0 w-full glass-nav z-50 border-b border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-            <a href="#" class="text-white font-bold text-xl tracking-tight">Дмитро<span class="text-accent">.</span></a>
+            <a href="#" class="text-white font-bold text-xl tracking-tight"><span data-i18n="brand.name">Дмитро</span><span class="text-accent">.</span></a>
             <nav class="hidden md:flex items-center gap-8">
-                <a href="#problem" class="text-text-light hover:text-white text-sm font-medium transition">Проблема</a>
-                <a href="#solution" class="text-text-light hover:text-white text-sm font-medium transition">Рішення</a>
-                <a href="#about" class="text-text-light hover:text-white text-sm font-medium transition">Про мене</a>
-                <a href="#how" class="text-text-light hover:text-white text-sm font-medium transition">Як працює</a>
-                <a href="#faq" class="text-text-light hover:text-white text-sm font-medium transition">FAQ</a>
+                <a href="#problem" class="text-text-light hover:text-white text-sm font-medium transition" data-i18n="nav.problem">Проблема</a>
+                <a href="#solution" class="text-text-light hover:text-white text-sm font-medium transition" data-i18n="nav.solution">Рішення</a>
+                <a href="#about" class="text-text-light hover:text-white text-sm font-medium transition" data-i18n="nav.about">Про мене</a>
+                <a href="#how" class="text-text-light hover:text-white text-sm font-medium transition" data-i18n="nav.how">Як працює</a>
+                <a href="#faq" class="text-text-light hover:text-white text-sm font-medium transition" data-i18n="nav.faq">FAQ</a>
             </nav>
-            <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn text-sm font-semibold px-5 py-2.5 rounded-2xl transition-all inline-flex items-center gap-2" style="color: #1B3238;">
-                Контакт
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><path d="M9 18l6-6-6-6"/></svg>
-            </a>
+            <div class="flex items-center gap-3">
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-0.5 text-sm font-medium text-text-light">
+                    <button id="lang-ua" class="lang-btn active" onclick="setLang('ua')">UA</button>
+                    <span class="text-white/20 select-none">|</span>
+                    <button id="lang-en" class="lang-btn" onclick="setLang('en')">EN</button>
+                </div>
+                <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn text-sm font-semibold px-5 py-2.5 rounded-2xl transition-all inline-flex items-center gap-2" style="color: #1B3238;">
+                    <span data-i18n="nav.cta">Контакт</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><path d="M9 18l6-6-6-6"/></svg>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -301,27 +325,27 @@
                 <!-- Text column: absolutely positioned on left, vertically centered -->
                 <div class="relative z-20 pt-28 pb-4 md:pt-40 md:pb-28 md:w-[55%]">
                     <div class="text-center md:text-left">
-                        <div class="reveal inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-xs font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
+                        <div class="reveal inline-flex items-center gap-2 bg-accent/10 border border-accent/20 text-accent text-xs font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase" data-i18n="hero.badge">
                             AI Консультант · dmytro.expert
                         </div>
-                        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                        <h1 class="reveal reveal-delay-1 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6" data-i18n="hero.headline">
                             Будую AI-системи що заробляють гроші та <span class="text-accent">економлять час</span>
                         </h1>
-                        <p class="reveal reveal-delay-2 text-text-light text-lg md:text-xl mb-10 max-w-xl leading-relaxed">
+                        <p class="reveal reveal-delay-2 text-text-light text-lg md:text-xl mb-10 max-w-xl leading-relaxed" data-i18n="hero.subtext">
                             Персональні консультації для підприємців, які хочуть впровадити AI у свій бізнес. Без складних термінів. Без зайвих витрат. Тільки те, що реально працює для вашого бізнесу.
                         </p>
                         <div class="reveal reveal-delay-3">
                             <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn btn-pulse font-semibold px-9 py-4 rounded-2xl text-lg transition-all inline-flex items-center gap-3 mb-8" style="color: #1B3238;">
-                                📩 Написати в Telegram
+                                <span data-i18n="hero.cta">📩 Написати в Telegram</span>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><path d="M9 18l6-6-6-6"/></svg>
                             </a>
                         </div>
                         <div class="reveal reveal-delay-4 flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-text-light">
-                            <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> 15+ років в IT</span>
+                            <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> <span data-i18n="hero.trust1">15+ років в IT</span></span>
                             <span class="text-white/20">·</span>
-                            <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> Сертифікований AI спеціаліст</span>
+                            <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> <span data-i18n="hero.trust2">Сертифікований AI спеціаліст</span></span>
                             <span class="text-white/20">·</span>
-                            <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> 100% success rate на Upwork</span>
+                            <span class="flex items-center gap-1.5"><span class="text-accent font-bold">✓</span> <span data-i18n="hero.trust3">100% success rate на Upwork</span></span>
                         </div>
                     </div>
                 </div>
@@ -341,41 +365,41 @@
     <!-- PROBLEM -->
     <section id="problem" class="py-20 md:py-28">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark text-center mb-3">Знайоме<span class="text-accent">?</span></h2>
-            <p class="reveal text-text-body text-center mb-12 text-base md:text-lg">Якщо хоча б один пункт резонує — ви точно в потрібному місці.</p>
+            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark text-center mb-3" data-i18n="problem.heading">Знайоме<span class="text-accent">?</span></h2>
+            <p class="reveal text-text-body text-center mb-12 text-base md:text-lg" data-i18n="problem.subheading">Якщо хоча б один пункт резонує — ви точно в потрібному місці.</p>
             <div class="mt-4 space-y-4">
                 <div class="reveal flex items-start gap-5 bg-white border border-gray-100 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-red-100 transition-all">
                     <div class="flex-shrink-0 mt-0.5 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </div>
-                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed">Ви чуєте про AI кожен день, але не розумієте з чого почати у <strong>ВАШОМУ</strong> бізнесі</p>
+                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed" data-i18n="problem.p1">Ви чуєте про AI кожен день, але не розумієте з чого почати у <strong>ВАШОМУ</strong> бізнесі</p>
                 </div>
                 <div class="reveal reveal-delay-1 flex items-start gap-5 bg-white border border-gray-100 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-red-100 transition-all">
                     <div class="flex-shrink-0 mt-0.5 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </div>
-                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed">Конкуренти вже автоматизують процеси, а ви досі робите все вручну</p>
+                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed" data-i18n="problem.p2">Конкуренти вже автоматизують процеси, а ви досі робите все вручну</p>
                 </div>
                 <div class="reveal reveal-delay-2 flex items-start gap-5 bg-white border border-gray-100 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-red-100 transition-all">
                     <div class="flex-shrink-0 mt-0.5 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </div>
-                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed">Пробували ChatGPT або Claude, але далі простих питань не пішли</p>
+                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed" data-i18n="problem.p3">Пробували ChatGPT або Claude, але далі простих питань не пішли</p>
                 </div>
                 <div class="reveal reveal-delay-3 flex items-start gap-5 bg-white border border-gray-100 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-red-100 transition-all">
                     <div class="flex-shrink-0 mt-0.5 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </div>
-                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed">Витрачаєте години на рутину, яку AI міг би робити за хвилини</p>
+                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed" data-i18n="problem.p4">Витрачаєте години на рутину, яку AI міг би робити за хвилини</p>
                 </div>
                 <div class="reveal reveal-delay-4 flex items-start gap-5 bg-white border border-gray-100 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-red-100 transition-all">
                     <div class="flex-shrink-0 mt-0.5 w-8 h-8 rounded-full bg-red-50 flex items-center justify-center">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </div>
-                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed">Наймали "спеціаліста" який дав теорію, але не результат</p>
+                    <p class="text-text-dark text-base md:text-[17px] leading-relaxed" data-i18n="problem.p5">Наймали "спеціаліста" який дав теорію, але не результат</p>
                 </div>
             </div>
-            <p class="reveal text-center mt-14 text-lg md:text-xl text-text-dark font-semibold max-w-2xl mx-auto leading-relaxed">
+            <p class="reveal text-center mt-14 text-lg md:text-xl text-text-dark font-semibold max-w-2xl mx-auto leading-relaxed" data-i18n="problem.bottomline">
                 Проблема не в AI. Проблема в тому, що ніхто не показав вам, як саме AI працює для <span class="text-accent font-bold">вашого конкретного бізнесу</span>.
             </p>
         </div>
@@ -384,10 +408,10 @@
     <!-- SOLUTION -->
     <section id="solution" class="py-20 md:py-28 " style="background: linear-gradient(180deg, #F7F7F8 0%, #EDFBF6 100%);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark text-center mb-4" style="max-width: 700px; margin-left: auto; margin-right: auto;">
+            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark text-center mb-4" style="max-width: 700px; margin-left: auto; margin-right: auto;" data-i18n="solution.heading">
                 Я покажу вам, де саме AI<br><span class="text-accent">заощадить вам час і гроші</span>
             </h2>
-            <p class="reveal text-center text-text-body max-w-2xl mx-auto mb-14 text-base md:text-lg leading-relaxed">
+            <p class="reveal text-center text-text-body max-w-2xl mx-auto mb-14 text-base md:text-lg leading-relaxed" data-i18n="solution.subheading">
                 Не загальні поради з YouTube. Не курс на 40 годин. Персональна консультація, де ми розбираємо ваш бізнес і знаходимо конкретні точки, де AI дасть максимальний результат.
             </p>
             <div class="grid sm:grid-cols-2 gap-6">
@@ -395,29 +419,29 @@
                     <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mb-6 shadow-sm shadow-accent/20">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight">Аналіз вашого бізнесу</h3>
-                    <p class="text-text-body leading-relaxed">Знайдемо процеси, які забирають найбільше часу та де AI дасть максимальну віддачу.</p>
+                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight" data-i18n="solution.card1.title">Аналіз вашого бізнесу</h3>
+                    <p class="text-text-body leading-relaxed" data-i18n="solution.card1.text">Знайдемо процеси, які забирають найбільше часу та де AI дасть максимальну віддачу.</p>
                 </div>
                 <div class="reveal reveal-delay-1 bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-accent/30 transition-all">
                     <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mb-6 shadow-sm shadow-accent/20">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight">Конкретний план автоматизації</h3>
-                    <p class="text-text-body leading-relaxed">Що впровадити, в якому порядку, які інструменти. Без абстракцій, тільки конкретика.</p>
+                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight" data-i18n="solution.card2.title">Конкретний план автоматизації</h3>
+                    <p class="text-text-body leading-relaxed" data-i18n="solution.card2.text">Що впровадити, в якому порядку, які інструменти. Без абстракцій, тільки конкретика.</p>
                 </div>
                 <div class="reveal reveal-delay-2 bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-accent/30 transition-all">
                     <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mb-6 shadow-sm shadow-accent/20">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight">Розрахунок економії</h3>
-                    <p class="text-text-body leading-relaxed">Скільки часу та грошей ви зекономите щомісяця. Реальні цифри для вашого бізнесу.</p>
+                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight" data-i18n="solution.card3.title">Розрахунок економії</h3>
+                    <p class="text-text-body leading-relaxed" data-i18n="solution.card3.text">Скільки часу та грошей ви зекономите щомісяця. Реальні цифри для вашого бізнесу.</p>
                 </div>
                 <div class="reveal reveal-delay-3 bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-accent/30 transition-all">
                     <div class="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mb-6 shadow-sm shadow-accent/20">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight">Hands-on впровадження</h3>
-                    <p class="text-text-body leading-relaxed">Не просто розповідаю, а допомагаю зробити. Крок за кроком, від ідеї до результату.</p>
+                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight" data-i18n="solution.card4.title">Hands-on впровадження</h3>
+                    <p class="text-text-body leading-relaxed" data-i18n="solution.card4.text">Не просто розповідаю, а допомагаю зробити. Крок за кроком, від ідеї до результату.</p>
                 </div>
             </div>
         </div>
@@ -435,11 +459,11 @@
                     </div>
                 </div>
                 <div class="flex-1">
-                    <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark mb-6">Привіт, я <span class="text-accent">Дмитро</span></h2>
+                    <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark mb-6" data-i18n="about.heading">Привіт, я <span class="text-accent">Дмитро</span></h2>
                     <div class="space-y-5 text-text-body leading-relaxed text-base md:text-[17px]">
-                        <p class="reveal">15+ років в IT. Успішно реалізував більше 200 проектів на Upwork з коефіцієнтом успішності 100%. Будую AI-агентів та системи автоматизації для бізнесу, якими ділюсь на <strong>dmytro.expert</strong>.</p>
-                        <p class="reveal reveal-delay-1">Зараз повністю в AI. Сертифікований спеціаліст <strong>The AI Upgrade</strong> та <strong>Microsoft</strong>.</p>
-                        <p class="reveal reveal-delay-2 font-medium text-text-dark">Я не теоретик. Я підприємець, який використовує AI у власному бізнесі кожен день. І я навчу вас робити те саме.</p>
+                        <p class="reveal" data-i18n="about.p1">15+ років в IT. Успішно реалізував більше 200 проектів на Upwork з коефіцієнтом успішності 100%. Будую AI-агентів та системи автоматизації для бізнесу, якими ділюсь на <strong>dmytro.expert</strong>.</p>
+                        <p class="reveal reveal-delay-1" data-i18n="about.p2">Зараз повністю в AI. Сертифікований спеціаліст <strong>The AI Upgrade</strong> та <strong>Microsoft</strong>.</p>
+                        <p class="reveal reveal-delay-2 font-medium text-text-dark" data-i18n="about.p3">Я не теоретик. Я підприємець, який використовує AI у власному бізнесі кожен день. І я навчу вас робити те саме.</p>
                     </div>
                 </div>
             </div>
@@ -449,8 +473,8 @@
     <!-- HOW IT WORKS -->
     <section id="how" class="py-20 md:py-28 bg-primary">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-4">Як це <span class="text-accent">працює</span></h2>
-            <p class="reveal text-text-light text-center mb-16 text-base md:text-lg">Чотири прості кроки до AI-автоматизації вашого бізнесу.</p>
+            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-4" data-i18n="how.heading">Як це <span class="text-accent">працює</span></h2>
+            <p class="reveal text-text-light text-center mb-16 text-base md:text-lg" data-i18n="how.subheading">Чотири прості кроки до AI-автоматизації вашого бізнесу.</p>
 
             <!-- Timeline -->
             <div class="space-y-0">
@@ -459,8 +483,8 @@
                         <div class="w-12 h-12 gradient-btn rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-accent/20">1</div>
                     </div>
                     <div class="pt-2 pb-2">
-                        <h3 class="text-white font-bold text-lg mb-1.5 tracking-tight">Напишіть мені в Telegram</h3>
-                        <p class="text-text-light leading-relaxed">Розкажіть коротко про свій бізнес і що хочете покращити.</p>
+                        <h3 class="text-white font-bold text-lg mb-1.5 tracking-tight" data-i18n="how.step1.title">Напишіть мені в Telegram</h3>
+                        <p class="text-text-light leading-relaxed" data-i18n="how.step1.text">Розкажіть коротко про свій бізнес і що хочете покращити.</p>
                     </div>
                 </div>
                 <div class="reveal reveal-delay-1 timeline-step flex items-start gap-6 pb-10">
@@ -468,8 +492,8 @@
                         <div class="w-12 h-12 gradient-btn rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-accent/20">2</div>
                     </div>
                     <div class="pt-2 pb-2">
-                        <h3 class="text-white font-bold text-lg mb-1.5 tracking-tight">Безкоштовна розмова (15 хв)</h3>
-                        <p class="text-text-light leading-relaxed">Я послухаю, задам питання і скажу чи зможу допомогти.</p>
+                        <h3 class="text-white font-bold text-lg mb-1.5 tracking-tight" data-i18n="how.step2.title">Безкоштовна розмова (15 хв)</h3>
+                        <p class="text-text-light leading-relaxed" data-i18n="how.step2.text">Я послухаю, задам питання і скажу чи зможу допомогти.</p>
                     </div>
                 </div>
                 <div class="reveal reveal-delay-2 timeline-step flex items-start gap-6 pb-10">
@@ -477,8 +501,8 @@
                         <div class="w-12 h-12 gradient-btn rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-accent/20">3</div>
                     </div>
                     <div class="pt-2 pb-2">
-                        <h3 class="text-white font-bold text-lg mb-1.5 tracking-tight">Персональна консультація</h3>
-                        <p class="text-text-light leading-relaxed">Глибокий розбір вашого бізнесу, конкретний план автоматизації з пріоритетами.</p>
+                        <h3 class="text-white font-bold text-lg mb-1.5 tracking-tight" data-i18n="how.step3.title">Персональна консультація</h3>
+                        <p class="text-text-light leading-relaxed" data-i18n="how.step3.text">Глибокий розбір вашого бізнесу, конкретний план автоматизації з пріоритетами.</p>
                     </div>
                 </div>
                 <div class="reveal reveal-delay-3 timeline-step flex items-start gap-6">
@@ -486,15 +510,15 @@
                         <div class="w-12 h-12 gradient-btn rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-accent/20">4</div>
                     </div>
                     <div class="pt-2">
-                        <h3 class="text-white font-bold text-lg mb-1.5 tracking-tight">Впровадження з підтримкою</h3>
-                        <p class="text-text-light leading-relaxed">Якщо потрібно, я допомагаю впроваджувати крок за кроком.</p>
+                        <h3 class="text-white font-bold text-lg mb-1.5 tracking-tight" data-i18n="how.step4.title">Впровадження з підтримкою</h3>
+                        <p class="text-text-light leading-relaxed" data-i18n="how.step4.text">Якщо потрібно, я допомагаю впроваджувати крок за кроком.</p>
                     </div>
                 </div>
             </div>
 
             <div class="reveal text-center mt-14">
                 <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn btn-pulse font-semibold px-9 py-4 rounded-2xl text-lg transition-all inline-flex items-center gap-3" style="color: #1B3238;">
-                    📩 Написати в Telegram
+                    <span data-i18n="how.cta">📩 Написати в Telegram</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><path d="M9 18l6-6-6-6"/></svg>
                 </a>
             </div>
@@ -504,36 +528,36 @@
     <!-- FOR WHOM -->
     <section class="py-20 md:py-28 " style="background: #F7F7F8;">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark text-center mb-4">Для <span class="text-accent">кого</span> це</h2>
-            <p class="reveal text-text-body text-center max-w-2xl mx-auto mb-14 text-base md:text-lg leading-relaxed">Мої консультації підходять тим, хто хоче реальних результатів від AI, а не загальних порад.</p>
+            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark text-center mb-4" data-i18n="forwhom.heading">Для <span class="text-accent">кого</span> це</h2>
+            <p class="reveal text-text-body text-center max-w-2xl mx-auto mb-14 text-base md:text-lg leading-relaxed" data-i18n="forwhom.subheading">Мої консультації підходять тим, хто хоче реальних результатів від AI, а не загальних порад.</p>
             <div class="grid sm:grid-cols-2 gap-6">
                 <div class="reveal bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-accent/30 transition-all">
                     <div class="w-12 h-12 bg-bg-mint rounded-xl flex items-center justify-center mb-5 shadow-sm">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0CC795" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight">Малий та середній бізнес</h3>
-                    <p class="text-text-dark/80 leading-relaxed">Власники, які хочуть працювати менше, а заробляти більше. AI бере на себе рутину.</p>
+                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight" data-i18n="forwhom.card1.title">Малий та середній бізнес</h3>
+                    <p class="text-text-dark/80 leading-relaxed" data-i18n="forwhom.card1.text">Власники, які хочуть працювати менше, а заробляти більше. AI бере на себе рутину.</p>
                 </div>
                 <div class="reveal reveal-delay-1 bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-accent/30 transition-all">
                     <div class="w-12 h-12 bg-bg-mint rounded-xl flex items-center justify-center mb-5 shadow-sm">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0CC795" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight">Підприємці</h3>
-                    <p class="text-text-dark/80 leading-relaxed">Які розуміють що AI це не майбутнє, а сьогодення. Але не знають з чого почати.</p>
+                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight" data-i18n="forwhom.card2.title">Підприємці</h3>
+                    <p class="text-text-dark/80 leading-relaxed" data-i18n="forwhom.card2.text">Які розуміють що AI це не майбутнє, а сьогодення. Але не знають з чого почати.</p>
                 </div>
                 <div class="reveal reveal-delay-2 bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-accent/30 transition-all">
                     <div class="w-12 h-12 bg-bg-mint rounded-xl flex items-center justify-center mb-5 shadow-sm">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0CC795" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight">Фрілансери та консультанти</h3>
-                    <p class="text-text-dark/80 leading-relaxed">Які хочуть масштабувати свій бізнес без найму додаткових людей.</p>
+                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight" data-i18n="forwhom.card3.title">Фрілансери та консультанти</h3>
+                    <p class="text-text-dark/80 leading-relaxed" data-i18n="forwhom.card3.text">Які хочуть масштабувати свій бізнес без найму додаткових людей.</p>
                 </div>
                 <div class="reveal reveal-delay-3 bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-accent/30 transition-all">
                     <div class="w-12 h-12 bg-bg-mint rounded-xl flex items-center justify-center mb-5 shadow-sm">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0CC795" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight">Команди</h3>
-                    <p class="text-text-dark/80 leading-relaxed">Які витрачають час на рутину замість стратегічної роботи.</p>
+                    <h3 class="text-lg font-bold text-text-dark mb-3 tracking-tight" data-i18n="forwhom.card4.title">Команди</h3>
+                    <p class="text-text-dark/80 leading-relaxed" data-i18n="forwhom.card4.text">Які витрачають час на рутину замість стратегічної роботи.</p>
                 </div>
             </div>
         </div>
@@ -542,42 +566,42 @@
     <!-- FAQ -->
     <section id="faq" class="py-20 md:py-28" style="background: linear-gradient(180deg, #F7F7F8 0%, #EDFBF6 100%);">
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
-            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark text-center mb-14">Часті <span class="text-accent">питання</span></h2>
+            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-text-dark text-center mb-14" data-i18n="faq.heading">Часті <span class="text-accent">питання</span></h2>
             <div class="space-y-3">
                 <div class="reveal faq-item bg-white rounded-2xl shadow-sm ring-1 ring-black/5 overflow-hidden transition-all">
                     <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left gap-4">
-                        <span class="font-semibold text-text-dark text-base leading-snug">Я нічого не розумію в AI. Це для мене?</span>
+                        <span class="font-semibold text-text-dark text-base leading-snug" data-i18n="faq.q1">Я нічого не розумію в AI. Це для мене?</span>
                         <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
                     <div class="faq-answer px-6 pb-6">
-                        <p class="text-text-body leading-relaxed">Так, саме для вас. Я пояснюю все простою мовою, без технічного жаргону. Мої консультації побудовані так, щоб ви розуміли не тільки ЩО робити, а й ЧОМУ.</p>
+                        <p class="text-text-body leading-relaxed" data-i18n="faq.a1">Так, саме для вас. Я пояснюю все простою мовою, без технічного жаргону. Мої консультації побудовані так, щоб ви розуміли не тільки ЩО робити, а й ЧОМУ.</p>
                     </div>
                 </div>
                 <div class="reveal reveal-delay-1 faq-item bg-white rounded-2xl shadow-sm ring-1 ring-black/5 overflow-hidden transition-all">
                     <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left gap-4">
-                        <span class="font-semibold text-text-dark text-base leading-snug">Скільки коштує консультація?</span>
+                        <span class="font-semibold text-text-dark text-base leading-snug" data-i18n="faq.q2">Скільки коштує консультація?</span>
                         <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
                     <div class="faq-answer px-6 pb-6">
-                        <p class="text-text-body leading-relaxed">Ціна залежить від складності вашого бізнесу та обсягу роботи. Напишіть мені в Telegram — розкажу деталі після короткої безкоштовної розмови.</p>
+                        <p class="text-text-body leading-relaxed" data-i18n="faq.a2">Ціна залежить від складності вашого бізнесу та обсягу роботи. Напишіть мені в Telegram — розкажу деталі після короткої безкоштовної розмови.</p>
                     </div>
                 </div>
                 <div class="reveal reveal-delay-2 faq-item bg-white rounded-2xl shadow-sm ring-1 ring-black/5 overflow-hidden transition-all">
                     <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left gap-4">
-                        <span class="font-semibold text-text-dark text-base leading-snug">Чи підходить AI для мого бізнесу?</span>
+                        <span class="font-semibold text-text-dark text-base leading-snug" data-i18n="faq.q3">Чи підходить AI для мого бізнесу?</span>
                         <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
                     <div class="faq-answer px-6 pb-6">
-                        <p class="text-text-body leading-relaxed">Якщо у вашому бізнесі є повторювані процеси, комунікація з клієнтами, або обробка даних — AI майже напевно зможе допомогти. Давайте розберемось разом на безкоштовній 15-хвилинній розмові.</p>
+                        <p class="text-text-body leading-relaxed" data-i18n="faq.a3">Якщо у вашому бізнесі є повторювані процеси, комунікація з клієнтами, або обробка даних — AI майже напевно зможе допомогти. Давайте розберемось разом на безкоштовній 15-хвилинній розмові.</p>
                     </div>
                 </div>
                 <div class="reveal reveal-delay-3 faq-item bg-white rounded-2xl shadow-sm ring-1 ring-black/5 overflow-hidden transition-all">
                     <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left gap-4">
-                        <span class="font-semibold text-text-dark text-base leading-snug">Чим це відрізняється від курсів по AI?</span>
+                        <span class="font-semibold text-text-dark text-base leading-snug" data-i18n="faq.q4">Чим це відрізняється від курсів по AI?</span>
                         <svg class="faq-chevron w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
                     <div class="faq-answer px-6 pb-6">
-                        <p class="text-text-body leading-relaxed">Курси дають загальну теорію. Я даю конкретний план для ВАШОГО бізнесу. Не треба витрачати 40 годин на навчання — ми фокусуємось на тому, що дасть результат саме вам.</p>
+                        <p class="text-text-body leading-relaxed" data-i18n="faq.a4">Курси дають загальну теорію. Я даю конкретний план для ВАШОГО бізнесу. Не треба витрачати 40 годин на навчання — ми фокусуємось на тому, що дасть результат саме вам.</p>
                     </div>
                 </div>
             </div>
@@ -591,13 +615,13 @@
                  style="background: radial-gradient(ellipse, #0CC795, transparent 70%);"></div>
         </div>
         <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">Готові <span class="text-accent">почати</span>?</h2>
-            <p class="reveal text-text-light text-lg md:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
+            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6" data-i18n="cta.heading">Готові <span class="text-accent">почати</span>?</h2>
+            <p class="reveal text-text-light text-lg md:text-xl mb-12 max-w-xl mx-auto leading-relaxed" data-i18n="cta.text">
                 Напишіть мені в Telegram. Розкажіть коротко про свій бізнес. Я відповім протягом дня і ми домовимось про безкоштовну 15-хвилинну розмову.
             </p>
             <div class="reveal">
                 <a href="https://t.me/mikheev_dmitry" target="_blank" class="gradient-btn btn-pulse font-semibold px-10 py-5 rounded-2xl text-lg transition-all inline-flex items-center gap-3" style="color: #1B3238;">
-                    📩 Написати в Telegram
+                    <span data-i18n="cta.btn">📩 Написати в Telegram</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><path d="M9 18l6-6-6-6"/></svg>
                 </a>
             </div>
@@ -610,18 +634,18 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
                 <!-- Brand -->
                 <div>
-                    <div class="text-white font-bold text-2xl tracking-tight mb-3">Дмитро<span class="text-accent">.</span></div>
-                    <p class="text-text-muted text-sm leading-relaxed max-w-xs">AI Консультант. Допомагаю підприємцям автоматизувати бізнес і вивільнити час на головне.</p>
+                    <div class="text-white font-bold text-2xl tracking-tight mb-3"><span data-i18n="brand.name">Дмитро</span><span class="text-accent">.</span></div>
+                    <p class="text-text-muted text-sm leading-relaxed max-w-xs" data-i18n="footer.brand">AI Консультант. Допомагаю підприємцям автоматизувати бізнес і вивільнити час на головне.</p>
                 </div>
                 <!-- Quick nav -->
                 <div>
-                    <h4 class="text-white font-semibold text-sm mb-4 tracking-wide uppercase">Навігація</h4>
+                    <h4 class="text-white font-semibold text-sm mb-4 tracking-wide uppercase" data-i18n="footer.nav.label">Навігація</h4>
                     <nav class="flex flex-col gap-2.5">
-                        <a href="#problem" class="text-text-muted hover:text-accent text-sm transition">Проблема</a>
-                        <a href="#solution" class="text-text-muted hover:text-accent text-sm transition">Рішення</a>
-                        <a href="#about" class="text-text-muted hover:text-accent text-sm transition">Про мене</a>
-                        <a href="#how" class="text-text-muted hover:text-accent text-sm transition">Як працює</a>
-                        <a href="#faq" class="text-text-muted hover:text-accent text-sm transition">FAQ</a>
+                        <a href="#problem" class="text-text-muted hover:text-accent text-sm transition" data-i18n="nav.problem">Проблема</a>
+                        <a href="#solution" class="text-text-muted hover:text-accent text-sm transition" data-i18n="nav.solution">Рішення</a>
+                        <a href="#about" class="text-text-muted hover:text-accent text-sm transition" data-i18n="nav.about">Про мене</a>
+                        <a href="#how" class="text-text-muted hover:text-accent text-sm transition" data-i18n="nav.how">Як працює</a>
+                        <a href="#faq" class="text-text-muted hover:text-accent text-sm transition" data-i18n="nav.faq">FAQ</a>
                     </nav>
                 </div>
                 <!-- Social -->
@@ -649,8 +673,8 @@
             </div>
             <!-- Bottom bar -->
             <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <p class="text-text-muted text-sm">© 2026 Дмитро Міхєєв. Всі права захищені.</p>
-                <p class="text-text-muted text-sm">Побудовано з <span class="text-accent">❤</span> та AI</p>
+                <p class="text-text-muted text-sm" data-i18n="footer.copyright">© 2026 Дмитро Міхєєв. Всі права захищені.</p>
+                <p class="text-text-muted text-sm" data-i18n="footer.built">Побудовано з <span class="text-accent">❤</span> та AI</p>
             </div>
         </div>
     </footer>
@@ -688,6 +712,215 @@
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+
+    <!-- ── i18n Translations ── -->
+    <script>
+        const translations = {
+            ua: {
+                'brand.name': 'Дмитро',
+                'nav.problem': 'Проблема',
+                'nav.solution': 'Рішення',
+                'nav.about': 'Про мене',
+                'nav.how': 'Як працює',
+                'nav.faq': 'FAQ',
+                'nav.cta': 'Контакт',
+                'hero.badge': 'AI Консультант · dmytro.expert',
+                'hero.headline': 'Будую AI-системи що заробляють гроші та <span class="text-accent">економлять час</span>',
+                'hero.subtext': 'Персональні консультації для підприємців, які хочуть впровадити AI у свій бізнес. Без складних термінів. Без зайвих витрат. Тільки те, що реально працює для вашого бізнесу.',
+                'hero.cta': '📩 Написати в Telegram',
+                'hero.trust1': '15+ років в IT',
+                'hero.trust2': 'Сертифікований AI спеціаліст',
+                'hero.trust3': '100% success rate на Upwork',
+                'problem.heading': 'Знайоме<span class="text-accent">?</span>',
+                'problem.subheading': 'Якщо хоча б один пункт резонує — ви точно в потрібному місці.',
+                'problem.p1': 'Ви чуєте про AI кожен день, але не розумієте з чого почати у <strong>ВАШОМУ</strong> бізнесі',
+                'problem.p2': 'Конкуренти вже автоматизують процеси, а ви досі робите все вручну',
+                'problem.p3': 'Пробували ChatGPT або Claude, але далі простих питань не пішли',
+                'problem.p4': 'Витрачаєте години на рутину, яку AI міг би робити за хвилини',
+                'problem.p5': 'Наймали "спеціаліста" який дав теорію, але не результат',
+                'problem.bottomline': 'Проблема не в AI. Проблема в тому, що ніхто не показав вам, як саме AI працює для <span class="text-accent font-bold">вашого конкретного бізнесу</span>.',
+                'solution.heading': 'Я покажу вам, де саме AI<br><span class="text-accent">заощадить вам час і гроші</span>',
+                'solution.subheading': 'Не загальні поради з YouTube. Не курс на 40 годин. Персональна консультація, де ми розбираємо ваш бізнес і знаходимо конкретні точки, де AI дасть максимальний результат.',
+                'solution.card1.title': 'Аналіз вашого бізнесу',
+                'solution.card1.text': 'Знайдемо процеси, які забирають найбільше часу та де AI дасть максимальну віддачу.',
+                'solution.card2.title': 'Конкретний план автоматизації',
+                'solution.card2.text': 'Що впровадити, в якому порядку, які інструменти. Без абстракцій, тільки конкретика.',
+                'solution.card3.title': 'Розрахунок економії',
+                'solution.card3.text': 'Скільки часу та грошей ви зекономите щомісяця. Реальні цифри для вашого бізнесу.',
+                'solution.card4.title': 'Hands-on впровадження',
+                'solution.card4.text': 'Не просто розповідаю, а допомагаю зробити. Крок за кроком, від ідеї до результату.',
+                'about.heading': 'Привіт, я <span class="text-accent">Дмитро</span>',
+                'about.p1': '15+ років в IT. Успішно реалізував більше 200 проектів на Upwork з коефіцієнтом успішності 100%. Будую AI-агентів та системи автоматизації для бізнесу, якими ділюсь на <strong>dmytro.expert</strong>.',
+                'about.p2': 'Зараз повністю в AI. Сертифікований спеціаліст <strong>The AI Upgrade</strong> та <strong>Microsoft</strong>.',
+                'about.p3': 'Я не теоретик. Я підприємець, який використовує AI у власному бізнесі кожен день. І я навчу вас робити те саме.',
+                'how.heading': 'Як це <span class="text-accent">працює</span>',
+                'how.subheading': 'Чотири прості кроки до AI-автоматизації вашого бізнесу.',
+                'how.step1.title': 'Напишіть мені в Telegram',
+                'how.step1.text': 'Розкажіть коротко про свій бізнес і що хочете покращити.',
+                'how.step2.title': 'Безкоштовна розмова (15 хв)',
+                'how.step2.text': 'Я послухаю, задам питання і скажу чи зможу допомогти.',
+                'how.step3.title': 'Персональна консультація',
+                'how.step3.text': 'Глибокий розбір вашого бізнесу, конкретний план автоматизації з пріоритетами.',
+                'how.step4.title': 'Впровадження з підтримкою',
+                'how.step4.text': 'Якщо потрібно, я допомагаю впроваджувати крок за кроком.',
+                'how.cta': '📩 Написати в Telegram',
+                'forwhom.heading': 'Для <span class="text-accent">кого</span> це',
+                'forwhom.subheading': 'Мої консультації підходять тим, хто хоче реальних результатів від AI, а не загальних порад.',
+                'forwhom.card1.title': 'Малий та середній бізнес',
+                'forwhom.card1.text': 'Власники, які хочуть працювати менше, а заробляти більше. AI бере на себе рутину.',
+                'forwhom.card2.title': 'Підприємці',
+                'forwhom.card2.text': 'Які розуміють що AI це не майбутнє, а сьогодення. Але не знають з чого почати.',
+                'forwhom.card3.title': 'Фрілансери та консультанти',
+                'forwhom.card3.text': 'Які хочуть масштабувати свій бізнес без найму додаткових людей.',
+                'forwhom.card4.title': 'Команди',
+                'forwhom.card4.text': 'Які витрачають час на рутину замість стратегічної роботи.',
+                'faq.heading': 'Часті <span class="text-accent">питання</span>',
+                'faq.q1': 'Я нічого не розумію в AI. Це для мене?',
+                'faq.a1': 'Так, саме для вас. Я пояснюю все простою мовою, без технічного жаргону. Мої консультації побудовані так, щоб ви розуміли не тільки ЩО робити, а й ЧОМУ.',
+                'faq.q2': 'Скільки коштує консультація?',
+                'faq.a2': 'Ціна залежить від складності вашого бізнесу та обсягу роботи. Напишіть мені в Telegram — розкажу деталі після короткої безкоштовної розмови.',
+                'faq.q3': 'Чи підходить AI для мого бізнесу?',
+                'faq.a3': 'Якщо у вашому бізнесі є повторювані процеси, комунікація з клієнтами, або обробка даних — AI майже напевно зможе допомогти. Давайте розберемось разом на безкоштовній 15-хвилинній розмові.',
+                'faq.q4': 'Чим це відрізняється від курсів по AI?',
+                'faq.a4': 'Курси дають загальну теорію. Я даю конкретний план для ВАШОГО бізнесу. Не треба витрачати 40 годин на навчання — ми фокусуємось на тому, що дасть результат саме вам.',
+                'cta.heading': 'Готові <span class="text-accent">почати</span>?',
+                'cta.text': 'Напишіть мені в Telegram. Розкажіть коротко про свій бізнес. Я відповім протягом дня і ми домовимось про безкоштовну 15-хвилинну розмову.',
+                'cta.btn': '📩 Написати в Telegram',
+                'footer.brand': 'AI Консультант. Допомагаю підприємцям автоматизувати бізнес і вивільнити час на головне.',
+                'footer.nav.label': 'Навігація',
+                'footer.copyright': '© 2026 Дмитро Міхєєв. Всі права захищені.',
+                'footer.built': 'Побудовано з <span class="text-accent">❤</span> та AI',
+            },
+            en: {
+                'brand.name': 'Dmytro',
+                'nav.problem': 'Problem',
+                'nav.solution': 'Solution',
+                'nav.about': 'About',
+                'nav.how': 'How it works',
+                'nav.faq': 'FAQ',
+                'nav.cta': 'Contact',
+                'hero.badge': 'AI Consultant · dmytro.expert',
+                'hero.headline': 'I build AI systems that make money and <span class="text-accent">save time</span>',
+                'hero.subtext': 'Personal consulting for entrepreneurs who want to implement AI in their business. No jargon. No unnecessary costs. Only what actually works for your business.',
+                'hero.cta': '📩 Message me on Telegram',
+                'hero.trust1': '15+ years in IT',
+                'hero.trust2': 'Certified AI specialist',
+                'hero.trust3': '100% success rate on Upwork',
+                'problem.heading': 'Sound familiar<span class="text-accent">?</span>',
+                'problem.subheading': "If even one point resonates, you're in the right place.",
+                'problem.p1': 'You hear about AI every day, but don\'t know where to start in <strong>YOUR</strong> business',
+                'problem.p2': 'Competitors are already automating processes while you still do everything manually',
+                'problem.p3': 'You tried ChatGPT or Claude, but never went beyond basic questions',
+                'problem.p4': 'You spend hours on routine tasks that AI could handle in minutes',
+                'problem.p5': 'You hired a "specialist" who gave you theory but no results',
+                'problem.bottomline': 'The problem isn\'t AI. The problem is that nobody showed you how AI works for <span class="text-accent font-bold">your specific business</span>.',
+                'solution.heading': "I'll show you exactly where AI will <br><span class=\"text-accent\">save you time and money</span>",
+                'solution.subheading': 'Not generic advice from YouTube. Not a 40-hour course. A personal consultation where we break down your business and find the exact points where AI will deliver maximum results.',
+                'solution.card1.title': 'Business Analysis',
+                'solution.card1.text': "We'll identify the processes that consume the most time and where AI will deliver the highest return.",
+                'solution.card2.title': 'Concrete Automation Plan',
+                'solution.card2.text': 'What to implement, in what order, which tools. No abstractions, only specifics.',
+                'solution.card3.title': 'Savings Calculation',
+                'solution.card3.text': "How much time and money you'll save each month. Real numbers for your business.",
+                'solution.card4.title': 'Hands-on Implementation',
+                'solution.card4.text': "I don't just advise, I help you execute. Step by step, from idea to results.",
+                'about.heading': "Hi, I'm <span class=\"text-accent\">Dmytro</span>",
+                'about.p1': '15+ years in IT. Successfully delivered over 200 projects on Upwork with a 100% success rate. I build AI agents and business automation systems, which I share on <strong>dmytro.expert</strong>.',
+                'about.p2': 'Now fully focused on AI. Certified specialist by <strong>The AI Upgrade</strong> and <strong>Microsoft</strong>.',
+                'about.p3': "I'm not a theorist. I'm an entrepreneur who uses AI in his own business every day. And I'll teach you to do the same.",
+                'how.heading': 'How it <span class="text-accent">works</span>',
+                'how.subheading': 'Four simple steps to AI automation for your business.',
+                'how.step1.title': 'Message me on Telegram',
+                'how.step1.text': "Tell me briefly about your business and what you want to improve.",
+                'how.step2.title': 'Free intro call (15 min)',
+                'how.step2.text': "I'll listen, ask questions, and tell you if I can help.",
+                'how.step3.title': 'Personal consultation',
+                'how.step3.text': 'Deep dive into your business, a concrete automation plan with priorities.',
+                'how.step4.title': 'Implementation with support',
+                'how.step4.text': 'If needed, I help implement step by step.',
+                'how.cta': '📩 Message me on Telegram',
+                'forwhom.heading': 'Who is <span class="text-accent">this</span> for',
+                'forwhom.subheading': 'My consulting is for those who want real AI results, not generic advice.',
+                'forwhom.card1.title': 'Small & Medium Business',
+                'forwhom.card1.text': 'Owners who want to work less and earn more. AI takes over the routine.',
+                'forwhom.card2.title': 'Entrepreneurs',
+                'forwhom.card2.text': "Who understand that AI isn't the future, it's the present. But don't know where to start.",
+                'forwhom.card3.title': 'Freelancers & Consultants',
+                'forwhom.card3.text': 'Who want to scale their business without hiring additional people.',
+                'forwhom.card4.title': 'Teams',
+                'forwhom.card4.text': 'Who spend time on routine instead of strategic work.',
+                'faq.heading': 'Frequently <span class="text-accent">asked questions</span>',
+                'faq.q1': 'I know nothing about AI. Is this for me?',
+                'faq.a1': 'Yes, exactly for you. I explain everything in simple language, without technical jargon. My consultations are designed so you understand not only WHAT to do, but also WHY.',
+                'faq.q2': 'How much does a consultation cost?',
+                'faq.a2': "The price depends on the complexity of your business and the scope of work. Message me on Telegram — I'll share details after a brief free conversation.",
+                'faq.q3': 'Is AI suitable for my business?',
+                'faq.a3': "If your business has repetitive processes, client communication, or data processing — AI can almost certainly help. Let's figure it out together during a free 15-minute call.",
+                'faq.q4': 'How is this different from AI courses?',
+                'faq.a4': "Courses give you general theory. I give you a specific plan for YOUR business. No need to spend 40 hours learning — we focus on what will deliver results specifically for you.",
+                'cta.heading': 'Ready to <span class="text-accent">start</span>?',
+                'cta.text': "Message me on Telegram. Tell me briefly about your business. I'll respond within the day and we'll arrange a free 15-minute conversation.",
+                'cta.btn': '📩 Message me on Telegram',
+                'footer.brand': 'AI Consultant. I help entrepreneurs automate their business and free up time for what matters.',
+                'footer.nav.label': 'Navigation',
+                'footer.copyright': '© 2026 Dmytro Mikheiev. All rights reserved.',
+                'footer.built': 'Built with <span class="text-accent">❤</span> and AI',
+            }
+        };
+
+        /* ── Language Switcher ── */
+        function applyLang(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key] !== undefined) {
+                    el.innerHTML = t[key];
+                }
+            });
+
+            // Update <html lang> attribute
+            document.documentElement.lang = lang === 'en' ? 'en' : 'uk';
+
+            // Update page title and meta description
+            if (lang === 'en') {
+                document.title = 'Dmytro Mikheiev — AI Business Consultant';
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.setAttribute('content', 'Personal consulting for entrepreneurs who want to implement AI in their business. No jargon. Only what actually works.');
+            } else {
+                document.title = 'Дмитро Міхєєв — AI Консультант для бізнесу';
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.setAttribute('content', 'Персональні консультації для підприємців, які хочуть впровадити AI у свій бізнес. Без складних термінів. Тільки те, що реально працює.');
+            }
+
+            // Toggle active button
+            document.getElementById('lang-ua').classList.toggle('active', lang === 'ua');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        }
+
+        function setLang(lang) {
+            localStorage.setItem('lang', lang);
+            // Update URL query param
+            const url = new URL(window.location.href);
+            if (lang === 'en') {
+                url.searchParams.set('lang', 'en');
+            } else {
+                url.searchParams.delete('lang');
+            }
+            history.replaceState(null, '', url.toString());
+            applyLang(lang);
+        }
+
+        // Init: detect ?lang=en query param first, then localStorage, then default UA
+        (function initLang() {
+            const params = new URLSearchParams(window.location.search);
+            const paramLang = params.get('lang');
+            const storedLang = localStorage.getItem('lang');
+            const lang = (paramLang === 'en' || storedLang === 'en') ? 'en' : 'ua';
+            applyLang(lang);
+        })();
     </script>
 </body>
 </html>
