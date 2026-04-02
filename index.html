@@ -887,6 +887,8 @@
             document.documentElement.lang = lang === 'en' ? 'en' : 'uk';
 
             // Update page title and meta description
+            const ogImage = lang === 'en' ? 'https://dmytro.expert/og-image-en.png' : 'https://dmytro.expert/og-image.png';
+
             if (lang === 'en') {
                 document.title = 'Dmytro Mikheiev — AI Business Consultant';
                 const metaDesc = document.querySelector('meta[name="description"]');
@@ -896,6 +898,12 @@
                 const metaDesc = document.querySelector('meta[name="description"]');
                 if (metaDesc) metaDesc.setAttribute('content', 'Персональні консультації для підприємців, які хочуть впровадити AI у свій бізнес. Без складних термінів. Тільки те, що реально працює.');
             }
+
+            // Swap OG and Twitter Card images per language
+            const ogImg = document.querySelector('meta[property="og:image"]');
+            if (ogImg) ogImg.setAttribute('content', ogImage);
+            const twImg = document.querySelector('meta[name="twitter:image"]');
+            if (twImg) twImg.setAttribute('content', ogImage);
 
             // Toggle active button
             document.getElementById('lang-ua').classList.toggle('active', lang === 'ua');
